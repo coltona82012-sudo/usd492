@@ -2,14 +2,14 @@ name: Daily USD492 Scraper
 
 on:
   schedule:
-    - cron: '0 0 * * *' # Runs every day at midnight UTC
-  workflow_dispatch: # Allows you to manually trigger it anytime from GitHub's UI
+    - cron: '0 0 * * *'
+  workflow_dispatch:
 
 jobs:
   scrape:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # Grants the workflow permissions to push commits back to the repository
+      contents: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -28,6 +28,9 @@ jobs:
       - name: Commit and push updated static files
         run: |
           git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add static/
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: automated daily scrape update [skip ci]" && git push)
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add usd492.org/
           git diff --quiet && git diff --staged --quiet || (git commit -m "chore: automated daily scrape update [skip ci]" && git push)
