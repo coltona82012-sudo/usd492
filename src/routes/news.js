@@ -25,7 +25,10 @@ router.post("/addnews", async (req, res) => {
 // Get a single news article by ID
 router.get("/news/:id", async (req, res) => {
   try {
-    const singleNews = await News.findById(req.params.id);
+    // Change 'id' to whatever your custom field name is in your schema
+    // (e.g., externalId: req.params.id or id: req.params.id)
+    const singleNews = await News.findOne({ id: req.params.id });
+
     if (!singleNews) {
       return res.status(404).json({ error: "News article not found" });
     }
