@@ -1,72 +1,36 @@
 const express = require("express");
 const router = express.Router();
-const { News, Event } = require("../models/Schema");
+const path = require("path");
+const fs = require("fs").promises;
 
-// Get all news
+// Get all news (example reading from a local JSON file if you store them that way)
 router.get("/news", async (req, res) => {
   try {
-    const news = await News.find().sort({ date: -1 });
-    res.json(news);
+    const filePath = path.join(__dirname, "..", "static", "news.json"); // Adjust path to wherever your news data is stored
+    const data = await fs.readFile(filePath, "utf8");
+    res.json(JSON.parse(data));
   } catch (err) {
     res.status(500).json({ error: "Failed to fetch news" });
   }
 });
 
-// Add news (admin/comment moderation)
-router.post("/addnews", async (req, res) => {
-  try {
-    const blog = new News(req.body);
-    await blog.save();
-    res.status(201).json({ message: "News added" });
-  } catch (err) {
-    res.status(400).json({ error: "Invalid input" });
-  }
-});
-// Get a single news article by ID
+// Get a single news article by ID (matching your ID like 2040790)
 router.get("/news/:id", async (req, res) => {
   try {
-    const singleNews = await News.findOne({ id: req.params.id });
+    const articleId = req.params.id;
 
-    if (!singleNews) {
-      return res.status(404).json({ error: "News article not found" });
-    }
-    res.json(singleNews);
-  } catch (err) {
-    console.error(err); // This will log the exact database error to your terminal/logs
-    res.status(500).json({ error: err.message }); // This sends the real error back in the response so you can see it
-  }
-});
-// Get sample news content for restoration
-router.get("/sample", async (req, res) => {
-  try {
-    const sample = await News.find().limit(1);
-    res.json(sample);
-  } catch (err) {
-    res.status(500).json({ error: "No sample found" });
-  }
-});
-
-// Get event status
-router.get("/events/status/:eventId", async (req, res) => {
-  try {
-    const event = await Event.findById(req.params.eventId);
-    res.json(event?.status);
-  } catch (err) {
-    res.status(404).json({ error: "Event not found" });
-  }
-});
-
-// Update event status
-router.patch("/events/update/:eventId", async (req, res) => {
-  try {
-    const updated = await Event.findByIdAndUpdate(
-      req.params.eventId,
-      { $set: { status: req.body.status } },
-      { new: true },
+    // Option A: If your articles are saved as individual HTML/JSON files named after their IDs (e.g., static/articles/2040790.json)
+    const articlePath = path.join(
+      __dirname,
+      "..",
+      "static",
+      "articles",
+      `${articleId}.json`,
     );
-    res.json(updated);
+    const content = await fs.readFile(articlePath, "utf8");
+    res.json(JSON.parse(content));
   } catch (err) {
-    res.status(400).json({ error: "Update failed" });
+    res.status(404).json({ error: "News article not found" });
   }
 });
 
