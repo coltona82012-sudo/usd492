@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org" id="preRegresponderForm" dir="ltr">
+    <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+        <link href="https://assets.powerschool.com/pds/31.0.0/css/pds.css" rel="stylesheet">
+        <script src="https://assets.powerschool.com/pds/31.0.0/js/powerschool-design-system-toolkit-bundled.min.js"></script>
+        <link href="https://assets.powerschool.com/pds/31.0.0/html/pds-components.html" rel="import">
+
+      
+        
+          <script type='text/javascript'>if(!_messages){var _messages={};}if(!_messagePrefixesAlreadyFetched){var _messagePrefixesAlreadyFetched=[];}if(!_messagePrefixesAlreadyFetched.includes("psx.js.admin_javascript.validate_date.")){_messagePrefixesAlreadyFetched.push("psx.js.admin_javascript.validate_date.");}_messages["psx.js.admin_javascript.validate_date.month_1"]="Month ";_messages["psx.js.admin_javascript.validate_date._doesnt_have_31_days"]=" doesn't have 31 days.";_messages["psx.js.admin_javascript.validate_date._doesnt_have_"]=" doesn't have ";_messages["psx.js.admin_javascript.validate_date.month_must_be_between_1_and_12"]="Month must be between 1 and 12.";_messages["psx.js.admin_javascript.validate_date.warning_invalid_date"]="Warning: Invalid Date";_messages["psx.js.admin_javascript.validate_date.date_format_must_be"]="Date format must be ({0}).";_messages["psx.js.admin_javascript.validate_date.day_must_be_between_1_and_31"]="Day must be between 1 and 31.";_messages["psx.js.admin_javascript.validate_date._days"]=" days.";_messages["psx.js.admin_javascript.validate_date.february_"]="February ";if(typeof pss_text != 'function') { function pss_text(key, params, returnKeyIfNotFound){if(_messages[key] === undefined) { if(returnKeyIfNotFound !== undefined && returnKeyIfNotFound === true){return key;}else{return 'Message Key Was Not Found';}}if(params == null || params.length == 0){return _messages[key];}else{msg = _messages[key];for(i = 0;i < params.length;i++){token="{"+i+"}"; msg = msg.replace(token, params[i]);}return msg;}}}</script>
+<script type='text/javascript'>if(!_messages){var _messages={};}if(!_messagePrefixesAlreadyFetched){var _messagePrefixesAlreadyFetched=[];}if(!_messagePrefixesAlreadyFetched.includes("psx.common.")){_messagePrefixesAlreadyFetched.push("psx.common.");}_messages["psx.common.daynamesmin_tue"]="Tu";_messages["psx.common.daynamesmin_thu"]="Th";_messages["psx.common.daynamesmin_sun"]="Su";_messages["psx.common.hijri_monthnames_rabi_thani"]="Rabi' Thani";_messages["psx.common.daynamesmin_sat"]="Sa";_messages["psx.common.daynamesshort_fri"]="Fri";_messages["psx.common.staff_search"]="Staff Search";_messages["psx.common.legend"]="Legend";_messages["psx.common.psweblink"]="PowerSchool.com";_messages["psx.common.daynamesmin_wed"]="We";_messages["psx.common.term"]="Term:";_messages["psx.common.pm"]="PM";_messages["psx.common.am"]="AM";_messages["psx.common.daynamesshort_mon"]="Mon";_messages["psx.common.hijri_monthnames_thoul_kidah"]="Thoul Ki'dah";_messages["psx.common.daynames_fri"]="Friday";_messages["psx.common.my_tasks"]="My Tasks";_messages["psx.common.main_menu"]="Main Menu";_messages["psx.common.daynamesletter_fri"]="F";_messages["psx.common.school"]="School:";_messages["psx.common.monthnames_sep"]="September";_messages["psx.common.daynames_sun"]="Sunday";_messages["psx.common.hijri_monthnames_muharram"]="Muharram";_messages["psx.common.daynames_sat"]="Saturday";_messages["psx.common.daynamesletter_sat"]="S";_messages["psx.common.monthnames_oct"]="October";_messages["psx.common.daynamesletter_sun"]="S";_messages["psx.common.monthnames_nov"]="November";_messages["psx.common.scheduling_year"]="Scheduling Year";_messages["psx.common.selectsystemlang"]="Select System Language";_messages["psx.common.monthnames_mar"]="March";_messages["psx.common.monthnames_may"]="May";_messages["psx.common.capital_email"]="Email";_messages["psx.common.daynames_mon"]="Monday";_messages["psx.common.welcome"]="Welcome,";_messages["psx.common.data_dictionary"]="Data Dictionary";_messages["psx.common.monthnames_jul"]="July";_messages["psx.common.monthnames_jun"]="June";_messages["psx.common.daynamesmin_fri"]="Fr";_messages["psx.common.daynamesletter_mon"]="M";_messages["psx.common.monthnames_jan"]="January";_messages["psx.common.system_help_title"]="System Help";_messages["psx.common.state_reporting_help_title"]="State Reporting Help";_messages["psx.common.daynamesmin_mon"]="Mo";_messages["psx.common.district"]="District Office";_messages["psx.common.seconds"]="{0} Seconds";_messages["psx.common.monthnames_feb"]="February";_messages["psx.common.daynames_wed"]="Wednesday";_messages["psx.common.monthnames_dec"]="December";_messages["psx.common.daynamesletter_tue"]="T";_messages["psx.common.daynamesletter_thu"]="H";_messages["psx.common.daynamesletter_wed"]="W";_messages["psx.common.daynames_tue"]="Tuesday";_messages["psx.common.monthnames_aug"]="August";_messages["psx.common.monthnames_apr"]="April";_messages["psx.common.daynames_thu"]="Thursday";_messages["psx.common.privacy_policy"]="Privacy Policy";_messages["psx.common.save"]="Save";_messages["psx.common.system_help"]="System Help";_messages["psx.common.school_title"]="Change School";_messages["psx.common.selectlanguage"]="Select Language";_messages["psx.common.data_dictionary_title"]="Data Dictionary";_messages["psx.common.monthnamesshort_dec"]="Dec";_messages["psx.common.daynamesshort_tue"]="Tue";_messages["psx.common.daynamesshort_thu"]="Thu";_messages["psx.common.term_title"]="Change Term";_messages["psx.common.daynamesshort_sun"]="Sun";_messages["psx.common.daynamesshort_sat"]="Sat";_messages["psx.common.monthnamesshort_feb"]="Feb";_messages["psx.common.refresh_interval"]="Refresh Interval";_messages["psx.common.powerschool"]="PowerSchool";_messages["psx.common.student_search"]="Student Search";_messages["psx.common.daynamesshort_wed"]="Wed";_messages["psx.common.monthnamesshort_aug"]="Aug";_messages["psx.common.monthnamesshort_apr"]="Apr";_messages["psx.common.help_title"]="Help";_messages["psx.common.provincial_reporting_help_title"]="Provincial Reporting Help";_messages["psx.common.district_abbreviation"]="District";_messages["psx.common.hijri_monthnames_ramadan"]="Ramadan";_messages["psx.common.sign_out"]="Sign Out";_messages["psx.common.open_navigation"]="Open Navigation";_messages["psx.common.email"]="email";_messages["psx.common.monthnamesshort_sep"]="Sep";_messages["psx.common.unsaved_data_lost"]="Changing the language refreshes the page. All unsaved data will be lost.";_messages["psx.common.sign_in_title"]="Sign In";_messages["psx.common.monthnamesshort_mar"]="Mar";_messages["psx.common.monthnamesshort_may"]="May";_messages["psx.common.whats_new_title"]="What's New";_messages["psx.common.monthnamesshort_oct"]="Oct";_messages["psx.common.loading"]="Loading...";_messages["psx.common.monthnamesshort_nov"]="Nov";_messages["psx.common.general.problem"]="Unable to process the request.  Please contact your system administrator to review logs.";_messages["psx.common.print_title"]="Print this page";_messages["psx.common.monthnamesshort_jul"]="Jul";_messages["psx.common.monthnamesshort_jun"]="Jun";_messages["psx.common.monthnamesshort_jan"]="Jan";_messages["psx.common.changes_recorded"]="The changes have been recorded.";_messages["psx.common.daily_bulletin"]="View Daily Bulletin";_messages["psx.common.sign_out_title"]="Sign Out";_messages["psx.common.hijri_monthnames_shawwal"]="Shawwal";_messages["psx.common.state_reporting_help"]="State Reporting Help";_messages["psx.common.powerschool_sis"]="PowerSchool SIS";_messages["psx.common.settings"]="Settings";_messages["psx.common.provincial_reporting_help"]="Provincial Reporting Help";_messages["psx.common.sign_in"]="Sign In";_messages["psx.common.hijri_monthnames_jamada_el_thaniah"]="Jamada El Thaniah";_messages["psx.common.manage_profile"]="Manage Profile";_messages["psx.common.skip_to_main_content"]="Skip to main content";_messages["psx.common.minute"]="{0} Minute";_messages["psx.common.language"]="Language";_messages["psx.common.hijri_monthnames_shaban"]="Sha'ban";_messages["psx.common.hijri_monthnames_jamada_el_oula"]="Jamada El Oula";_messages["psx.common.copyright"]="Copyright &copy; 2005-2025 PowerSchool Group LLC and/or its affiliate(s). All rights reserved.<br/>All trademarks are either owned or licensed by PowerSchool Group LLC and/or its affiliates.";_messages["psx.common.include_currency_number_and_dates"]="Includes district locale settings for formatting currency, numbers and dates";_messages["psx.common.close"]="Close";_messages["psx.common.stop_refresh"]="Stop Refresh";_messages["psx.common.hijri_monthnames_rabi_awwal"]="Rabi' Awwal";_messages["psx.common.help"]="Help";_messages["psx.common.translate_page_title"]="Localize Page";_messages["psx.common.whats_new"]="What's New";_messages["psx.common.hijri_monthnames_safar"]="Safar";_messages["psx.common.hijri_monthnames_thoul_hijjah"]="Thoul Hijjah";_messages["psx.common.guardian_daily_bulletin"]="View School Bulletin";_messages["psx.common.minutes"]="{0} Minutes";_messages["psx.common.hijri_monthnames_rajab"]="Rajab";_messages["psx.common.cancel"]="Cancel";if(typeof pss_text != 'function') { function pss_text(key, params, returnKeyIfNotFound){if(_messages[key] === undefined) { if(returnKeyIfNotFound !== undefined && returnKeyIfNotFound === true){return key;}else{return 'Message Key Was Not Found';}}if(params == null || params.length == 0){return _messages[key];}else{msg = _messages[key];for(i = 0;i < params.length;i++){token="{"+i+"}"; msg = msg.replace(token, params[i]);}return msg;}}}</script>
+<script type='text/javascript'>if(!_messages){var _messages={};}if(!_messagePrefixesAlreadyFetched){var _messagePrefixesAlreadyFetched=[];}if(!_messagePrefixesAlreadyFetched.includes("psx.js.scripts.psbehaviors.")){_messagePrefixesAlreadyFetched.push("psx.js.scripts.psbehaviors.");}_messages["psx.js.scripts.psbehaviors.closetext"]="Done";_messages["psx.js.scripts.psbehaviors.off"]="Off";_messages["psx.js.scripts.psbehaviors.prevtext"]="Prev";_messages["psx.js.scripts.psbehaviors.currenttext"]="Today";_messages["psx.js.scripts.psbehaviors.yes"]="Yes";_messages["psx.js.scripts.psbehaviors.visible"]="Visible";_messages["psx.js.scripts.psbehaviors.about_n_characters_left"]="Approximately {0} characters left";_messages["psx.js.scripts.psbehaviors.on"]="On";_messages["psx.js.scripts.psbehaviors.or"]="or";_messages["psx.js.scripts.psbehaviors.no"]="No";_messages["psx.js.scripts.psbehaviors.noaccess"]="No Field Access";_messages["psx.js.scripts.psbehaviors.time_entry"]="Time Entry";_messages["psx.js.scripts.psbehaviors.hide_header"]="Hide Header";_messages["psx.js.scripts.psbehaviors.added"]="Added";_messages["psx.js.scripts.psbehaviors.change_date"]="Change Date";_messages["psx.js.scripts.psbehaviors.hide_main_menu"]="Hide Main Menu";_messages["psx.js.scripts.psbehaviors.wizprevious"]="Previous";_messages["psx.js.scripts.psbehaviors.confirm_delete"]="Confirm Delete";_messages["psx.js.scripts.psbehaviors.icons"]="Icons";_messages["psx.js.scripts.psbehaviors.cancel"]="Cancel";_messages["psx.js.scripts.psbehaviors.time_entry_x"]="Time Entry ({0})";_messages["psx.js.scripts.psbehaviors.show_header"]="Show Header";_messages["psx.js.scripts.psbehaviors.interval_thirty"]="30 minute interval";_messages["psx.js.scripts.psbehaviors.restore_selections_school_and_term"]="Restore Selection(s), School and Term";_messages["psx.js.scripts.psbehaviors.interval_hour"]="hour only interval";_messages["psx.js.scripts.psbehaviors.time_icon"]="Time Entry Icon";_messages["psx.js.scripts.psbehaviors.deleted"]="Deleted";_messages["psx.js.scripts.psbehaviors.date_entry"]="Date Entry";_messages["psx.js.scripts.psbehaviors.nexttext"]="Next";_messages["psx.js.scripts.psbehaviors.show_main_menu"]="Show Main Menu";_messages["psx.js.scripts.psbehaviors.legend"]="Legend";_messages["psx.js.scripts.psbehaviors.selected"]="Selected";_messages["psx.js.scripts.psbehaviors.no_match_found"]="No match found";_messages["psx.js.scripts.psbehaviors.reload_last_page"]="Reload Last Page";_messages["psx.js.scripts.psbehaviors.would_you_like_to_reload_the_last_page_you_were_viewing"]="Your session timed out due to inactivity. Would you like to restore your previous session and reload the last page you were viewing?";_messages["psx.js.scripts.psbehaviors.n_characters_left"]="{0} characters left";_messages["psx.js.scripts.psbehaviors.main_navigation"]="Main Navigation";_messages["psx.js.scripts.psbehaviors.deleted_xx"]="Deleted: {0}";_messages["psx.js.scripts.psbehaviors.wizstep"]="Step";_messages["psx.js.scripts.psbehaviors.confirmbanner.schoolstaff_removed"]="The previously selected staff member was successfully removed from this school.";_messages["psx.js.scripts.psbehaviors.required"]="Required Field";_messages["psx.js.scripts.psbehaviors.hijri_dates"]="Hijri dates";_messages["psx.js.scripts.psbehaviors.delete"]="Delete";_messages["psx.js.scripts.psbehaviors.confirm"]="Confirm ";_messages["psx.js.scripts.psbehaviors.added_xx"]="Added: {0}";_messages["psx.js.scripts.psbehaviors.wiznext"]="Next";_messages["psx.js.scripts.psbehaviors.interval_five"]="5 minute interval";_messages["psx.js.scripts.psbehaviors.asterisk"]="An asterisk indicates that classes for the term are hidden from parents/students in the PowerSchool Student and Parent portal and PowerSchool Mobile app.";_messages["psx.js.scripts.psbehaviors.calendar_icon"]="Date Entry Icon";_messages["psx.js.scripts.psbehaviors.hidden"]="Hidden";_messages["psx.js.scripts.psbehaviors.enrollment_alert"]="The student you are attempting to enroll has an existing record in the district. Click OK, then proceed to transfer the student to your school if necessary.";_messages["psx.js.scripts.psbehaviors.would_you_like_to_restore_your_selections_school_and_term"]="Your session timed out due to inactivity. Would you like to restore your previous session and return to the last used school, term, student and/or teacher selection?";_messages["psx.js.scripts.psbehaviors.interval_fifteen"]="15 minute interval";_messages["psx.js.scripts.psbehaviors.indicator"]="Possible duplicate student";if(typeof pss_text != 'function') { function pss_text(key, params, returnKeyIfNotFound){if(_messages[key] === undefined) { if(returnKeyIfNotFound !== undefined && returnKeyIfNotFound === true){return key;}else{return 'Message Key Was Not Found';}}if(params == null || params.length == 0){return _messages[key];}else{msg = _messages[key];for(i = 0;i < params.length;i++){token="{"+i+"}"; msg = msg.replace(token, params[i]);}return msg;}}}</script>
+
+
+	<script src="/scripts/jquery-3.6.1/jquery-3.6.1.min.js"></script>
+	<script src="/scripts/jquery-3.6.1/jquery-migrate-3.4.0.min.js"></script>
+	<script src="/scripts/jquery-ui-1.13.2.custom.min.js"></script>
+    <script src="/scripts/requirejs/require.js"></script>
+
+
+<!-- Styling to render date widget -->
+<link href="/images/css/screen.css" rel="stylesheet" media="screen" />
+<link href="/images/css/print.css" rel="stylesheet" media="print" />
+
+<script type="text/javascript" >
+
+  /**
+    * Methods to fetch cdn url and path from configitem
+    * These methods are required for regional dates display for jQuery date picker
+    * Duplicated these methods in
+    *   sis/web/src/views/psxdecorators/commonscripts.ftl
+    *   web_root/wildcards/commonscripts.txt
+    */
+  var getRegionalMappingBaseUrl = function() {
+    return 'https://assets.powerschool.com';
+  }
+
+  var getRegionalMappingUrlPath = function() {
+    return '/calendar/hijri/sa/';
+  }
+
+  var rcsFFEnabled = function() {
+    return 'true';
+  }
+
+  /**
+     * Method to fetch calendar system for the current locale
+     * Returns true if for the current locale have both Gregorian and Regional language display selected
+     * Duplicated these methods in
+     *    sis/web/src/views/psxdecorators/commonscripts.ftl
+     *    web_root/wildcards/commonscripts.txt
+     */
+  var showRegionalToggle = function() {
+    return 'false';
+  }
+
+  /**
+    * Method to fetch Admin or Teacher pref which provides default behavior of regional date display toggle
+    * Duplicated these methods in
+    *    sis/web/src/views/psxdecorators/commonscripts.ftl
+    *    web_root/wildcards/commonscripts.txt
+    */
+  var defaultTogglePref = function() {
+    return 'false';
+  }
+
+  var feedbackEnabled = false;
+  var recordingActivated = false;
+</script>
+<script src="/scripts/psDialog.js"></script>
+<script type="text/javascript">
+/**
+ * Need to configure require js before psbehaviors.
+ */
+require.config({
+        waitSeconds: 0,
+    	baseUrl: "/scripts/",
+    	paths: {
+    		'handlebars':                'handlebars/require-handlebars.1.0.0.rc3',
+    		'json2':                     'handlebars/json2',
+    		'hbs':                       'hbs/0.4.0/hbs',
+    		'underscore':                'underscore/underscore-'+'min'+'-1.8.3',
+    		'backbone':                  'backbone/backbone-'+'min'+'-0.9.10',
+    		'jquery.cookie':             'jquery.cookie',
+    		'psDateValidate':            'psDateValidate',
+    		'psDateWidget':              'psDateWidget',
+    		'psDirtyStateController':    'psDirtyStateController',
+    		'psFormValidate':            'psFormValidate',
+    		'psNumWidget':               'psNumWidget',
+    		'psReloader/psReloader-min': 'psReloader/psReloader-min',
+    		'psRequired':                'psRequired',
+    		'psTextWidget':              'psTextWidget',
+    		'psValidationFunctions':     'psValidationFunctions',
+            'angular':                   'lib/angular/angular.min',
+            'angular-cookies':           'lib/angular/angular-cookies.min',
+            'angular-route':             'lib/angular/angular-route.min',
+            'angular-sanitize':          'lib/angular/angular-sanitize.min',
+            'angular-translate':         'lib/angular/angular-translate.min',
+            'angular-messages':          'lib/angular/angular-messages.min',
+            'angular-aria':              'lib/angular/angular-aria.min',
+            'angular-resource':      	 'lib/angular/angular-resource.min',
+            'encoding':               	 'lib/textencoder/encoding',
+            'filesaver':                 'lib/filesaver/FileSaver.min',
+            'psDateWidgetRegionalToggleHelper': 'psDateWidgetRegionalToggleHelper'
+        },
+
+        hbs: {
+            disableI18n: true
+        },
+
+        shim: {
+            'underscore': {
+                exports: '_'
+            },
+            'backbone': {
+                exports: 'Backbone',
+                deps: ['underscore']
+            },
+            'angular': {
+                exports: 'angular'
+            },
+            'angular-translate':{
+                deps: ['angular']
+            },
+            'angular-sanitize':{
+                deps: ['angular']
+            },
+            'angular-route':{
+                deps: ['angular']
+            },
+            'angular-cookies':{
+                deps: ['angular']
+            },
+            'angular-messages':{
+                deps: ['angular']
+            },
+            'angular-aria':{
+                deps: ['angular']
+            },
+            'angular-resource': {
+                deps: ['angular']
+            }
+        },
+
+        map: {
+            '*': {
+                'Handlebars': 'handlebars'
+            }
+        },
+        priority: [
+              'angular'
+        ]    });
+define('jquery', function () {
+	return jQuery;
+});
+define('jquery-ui', ['jquery'], function($) {
+	return $.ui;
+});
+</script>
+
+<script src="/scripts/psbehaviors.js"></script>
+
+<script type="text/javascript">
+/**
+ * Set the page's locale via a request_locale URL parameter. If there is already a URL parameter by
+ * this name, then substitute it with the passed-in locale. NOTE: This function will actually cause the page
+ * to be re-submitted with the new locale, so it really should not be used with pages submitted via POST
+ * requests (if there are any, which I hope there are not).
+ * @param locale the locale to set (e.g. en_US)
+ */
+function setPageLocale (locale) {
+  var c=String (window.location);
+  var rlpos = c.indexOf("request_locale=");
+  var afterPart = "";
+  if (rlpos > 0) {
+    var afterBegin = c.indexOf("&", rlpos);
+    if (afterBegin > 0) {
+      afterPart = c.substring(afterBegin);
+    }
+    c = c.substring(0, rlpos-1);
+  }
+  var s=(c.indexOf('?') > 0 ? '&' : '?');
+  var np = c + s + 'request_locale=' + locale + afterPart;
+  window.location = np;
+}
+
+function get_locale() {
+  return "en_US";
+}
+
+if(typeof pss_text!='function'){
+function pss_text(key, params, returnKeyIfNotFound) {
+	if (_messages[key] === undefined)
+	{
+		if (returnKeyIfNotFound !== undefined && returnKeyIfNotFound === true) {
+			return key;
+		} else {
+			return "Message Key Was Not Found";
+		}
+	}
+	if(params == null || params.length == 0)
+	{
+  		return _messages[key];
+	}
+	else
+	{
+		msg = _messages[key];
+		for ( i = 0; i < params.length; i++)
+		{
+			token = "{"+i+"}";
+			msg = msg.replace(token, params[i]);
+		}
+		return msg;
+	}
+}
+}
+
+function get_localized_date(d, fmt) {
+   if (fmt === "mmdd") return ("" + ( (d.getMonth()+1) < 10 ? '0' + (d.getMonth() + 1) : (d.getMonth() + 1 ) ) + "/" + (d.getDate() < 10 ? '0' + d.getDate() : d.getDate() ) + "");
+   return ("" + ( (d.getMonth()+1) < 10 ? '0' + (d.getMonth() + 1) : (d.getMonth() + 1 ) ) + "/" + (d.getDate() < 10 ? '0' + d.getDate() : d.getDate() ) + "/" + d.getFullYear() + "");
+}
+
+<!-- This function return date format in machine readable form -->
+function get_short_date_format() {
+   return "M/d/yy";
+}
+<!-- This function return date format in machine readable form -->
+function get_date_format() {
+   return "MM/dd/yyyy";
+}
+
+<!-- This function return date format in human readable form -->
+function get_date_text(){
+  	return "MM/DD/YYYY";
+}
+<!-- This function return date format in human readable form -->
+function get_short_date_text(){
+	return "MM/DD/YY";
+}
+
+<!-- This function return time format in machine readable form without seconds-->
+function get_HHMMTime_format() {
+   return "hh:mm a";
+}
+
+<!-- This function return time format in machine readable form with seconds-->
+function get_HHMMSSTime_format() {
+   return "hh:mm:ss a";
+}
+
+<!-- This function return ante/post meridian in machine readable form -->
+function get_AMPM(ampm) {
+	if(ampm == "am")
+   		return "AM";
+   	else
+   		return "PM";
+}
+
+if(!_messages) var _messages = {};
+if(!_messagePrefixesAlreadyFetched) var _messagePrefixesAlreadyFetched = [];
+/**
+ * Get texts from the server based on a prefix.
+ * @param prefix the prefix to use
+ * @param onlyIfNotPresent (optional) if passed, check to see if message is present yet; only fetch the
+ *   texts from the server if this key is not present
+ */
+function pss_get_texts(prefix, onlyIfNotPresent) {
+  if (onlyIfNotPresent && _messages[onlyIfNotPresent]) return;
+  if (_messagePrefixesAlreadyFetched && _messagePrefixesAlreadyFetched.includes(prefix.toLowerCase())) return;
+
+  jQuery.ajax ({async: false,
+    url:'/getMessages.action',
+    data:{prefix: prefix, locale: get_locale()},
+    dataType:'json',
+    success: function (msgs) {
+      jQuery.each(msgs, function (key, value) {
+        _messages[key] = value;
+      });
+	  _messagePrefixesAlreadyFetched.push(prefix.toLowerCase());
+    }
+  });
+}
+</script>
+
+<!-- iPhone Scripts introduced for parent access -->
+<script type='text/javascript'>if(!_messages){var _messages={};}if(!_messagePrefixesAlreadyFetched){var _messagePrefixesAlreadyFetched=[];}if(!_messagePrefixesAlreadyFetched.includes("psx.js.admin_javascript.validate_date.")){_messagePrefixesAlreadyFetched.push("psx.js.admin_javascript.validate_date.");}_messages["psx.js.admin_javascript.validate_date.month_1"]="Month ";_messages["psx.js.admin_javascript.validate_date._doesnt_have_31_days"]=" doesn't have 31 days.";_messages["psx.js.admin_javascript.validate_date._doesnt_have_"]=" doesn't have ";_messages["psx.js.admin_javascript.validate_date.month_must_be_between_1_and_12"]="Month must be between 1 and 12.";_messages["psx.js.admin_javascript.validate_date.warning_invalid_date"]="Warning: Invalid Date";_messages["psx.js.admin_javascript.validate_date.date_format_must_be"]="Date format must be ({0}).";_messages["psx.js.admin_javascript.validate_date.day_must_be_between_1_and_31"]="Day must be between 1 and 31.";_messages["psx.js.admin_javascript.validate_date._days"]=" days.";_messages["psx.js.admin_javascript.validate_date.february_"]="February ";if(typeof pss_text != 'function') { function pss_text(key, params, returnKeyIfNotFound){if(_messages[key] === undefined) { if(returnKeyIfNotFound !== undefined && returnKeyIfNotFound === true){return key;}else{return 'Message Key Was Not Found';}}if(params == null || params.length == 0){return _messages[key];}else{msg = _messages[key];for(i = 0;i < params.length;i++){token="{"+i+"}"; msg = msg.replace(token, params[i]);}return msg;}}}</script>
+<script language="JavaScript" type="text/javascript" src="/scripts/validate_date.js"></script>
+        
+      
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-animate.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+        <script src="/scripts/formbuilder/ext/underscore/1.13.7/underscore-min.js"></script>
+
+        <script>
+          var locale = "en_US";
+          var module = {
+              dependencies: []
+          };
+          module.dependencies = ["teacher", "essentials", "enroll"]; // "stusupport" is not needed for Pre-Reg form
+
+          
+            var isi18nEnabledPreRegDatePicker = 1;
+            
+              var initializeDateWidget;
+              require(['psdatewidget'], function(psdatewidget) {
+                initializeDateWidget = psdatewidget.initializeDateWidget;
+              });
+            
+          
+
+          
+            var isi18nEnabledDateTimePicker = 1;
+          
+
+          
+                  var isi18nEnabledGuardian = 1;
+          
+
+          
+                  var isi18nDynamicTranslate = 1;
+          
+
+          
+              var isi18nEnabledMisc = 1;
+          
+
+          
+            var isi18nDuplicateStudentCheck = 1;
+          
+
+          var isi18nEnabledAdminTeacher = 0;
+      </script>
+
+        <link href="/images/css/screen.css" rel="stylesheet" media="screen">
+        <link href="/images/css/print.css" rel="stylesheet" media="print">
+
+        <link href="/scripts/formbuilder/ext/select2/3.4.5/select2.css" rel="stylesheet" media="screen">
+        <link href="/scripts/formbuilder/ext/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet" media="screen">
+        <link href="/scripts/formbuilder/ext/bootstrap-table/bootstrap-datepicker3.min.css" rel="stylesheet" media="screen">
+        <link href="/scripts/formbuilder/css/formbuilder.css" rel="stylesheet">
+        <link href="/scripts/formbuilder/css/formbuilder.print.css" rel="stylesheet" media="print">
+        <link href="/scripts/formbuilder/ext/jq/scrolltabs/scrolltabs.css" rel="stylesheet" media="screen">
+        <link href="/scripts/formbuilder/ext/sweetalert/sweetalert.css" rel="stylesheet" media="screen">
+        <link href="/scripts/formbuilder/css/prereg.css" rel="stylesheet">
+
+        <script src="/scripts/formbuilder/ext/angular-ui/sortable.js"></script>
+        <script src='/scripts/formbuilder/ext/checklist-model/checklist-model.js'></script>
+        <script src="/scripts/formbuilder/ext/select2/3.4.5/select2.min.js"></script>
+        <script type="text/javascript" src="/scripts/formbuilder/js/responderPreReg.js"></script>
+        <script src="../../scripts/formbuilder/js/mainPreReg.js"></script>
+
+        <style>
+          .ui-datepicker-trigger:focus{
+            background-color: #00667E !important;
+          }
+          .ui-datepicker-trigger:hover {
+              background-color: #00667E !important;
+          }
+          .ui-datepicker-trigger{
+            min-width: 40px;
+          }
+          [dir="rtl"]  #loading .ui-progressbar-overlay {
+            animation-direction: reverse;
+          }
+          table td:first-child, table th:first-child {
+              padding-inline-start: 1px !important;
+              -webkit-padding-start: 1px;
+          }
+          table tbody td:last-child {
+              padding-inline-end: 1px !important;
+              -webkit-padding-end: 1px;
+          }
+          input, select, textarea {
+            border: auto !important;
+          }
+          select {
+             -webkit-appearance: auto !important;
+             background-image: none !important;
+             height: inherit !important;
+          }
+          table thead th {
+            height: inherit !important;
+          }
+          table tbody td {
+            height: inherit !important;
+          }
+          .ui-datepicker td span, .ui-datepicker td a.ui-state-default {
+             font-weight: bold;
+          }
+          
+            
+              html {
+                font-size: 14px;
+              }
+            
+          
+        </style>
+
+      </head>
+      <div ng-cloak id="loadingDiv" class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front dialogLoading ui-draggable" tabindex="-1" role="dialog"  aria-describedby="loading"  data-loading>
+        <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix ui-draggable-handle">
+          <span class="ui-dialog-title" ng-if="!isi18nEnabledGuardian">Loading</span>
+          <span class="ui-dialog-title" ng-if="isi18nEnabledGuardian">{{commonMessageKeys['eec.html.public_formbuilder.form.loading']}}</span>
+          <button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-dialog-titlebar-close" role="button" title="Close">
+          <span class="ui-button-icon-primary ui-icon ui-icon-closethick"></span>
+          <span class="ui-button-text" ng-if="!isi18nEnabledGuardian">Close</span>
+          <span class="ui-button-text" ng-if="isi18nEnabledGuardian">{{commonMessageKeys['eec.html.public_formbuilder.form.close']}}</span>
+        </button>
+      </div>
+      <div id="loading" class="ui-progressbar ui-widget ui-progressbar-indeterminate ui-dialog-content ui-widget-content" role="progressbar" aria-valuemin="0">
+            <div class="ui-progressbar-value ui-widget-header" style="width: 100;">
+              <div class="ui-progressbar-overlay">
+            </div>
+          </div>
+        </div>
+      </div>
+      <body id="fb_content_preReg">
+
+        <link class="pds-icon-src" rel="import" href="https://assets.powerschool.com/pds/24.0.0/img/icons/pds-icons.svg" />
+        <div class="pds-app" ng-controller="formCtrl">
+          <div class="pds-app-header-bar" style="height: 60px !important;">
+            <header>
+              <a class="pds-powerschool-logo" id="psf-logo-navigation" tabindex="0">
+                <pds-icon name="logo-powerschool-p-inverse"></pds-icon>
+                <div class="pds-logo-text">
+                  <span class="pds-logo-text-primary">Enrollment Express</span>
+                </div>
+              </a>
+            </header>
+            <div ng-cloak class="pds-app-actions">
+              <a ng-click="toggleDropDown()"><label class="languageselection"ng-if="!isi18nEnabledGuardian">Select Language</label></a>
+              <a ng-click="toggleDropDown()"><label class="languageselection" ng-if="isi18nEnabledGuardian">{{commonMessageKeys['eec.html.public_formbuilder.form.label_select_language']}}</label></a>
+              <div class="dropdown" ng-if="localeMigrationFlag">
+                <a ng-click="toggleDropDown()"><pds-icon  tabindex="0" role="link" aria-label="language dropdown" name="globe" style="fill: white"></pds-icon></a>
+                <div id="myDropdown" class="dropdown-content" tabindex="1">
+                  <a class="dropdown-hover" ng-repeat="language in languages" ng-click="switchLanguage(this.language)" value="{{language.localeid}}">{{language.displaylabel}}</a>
+                </div>
+              </div>
+              <div class="dropdown" ng-if="!localeMigrationFlag">
+                <a ng-click="toggleDropDown()"><pds-icon  tabindex="0" role="link" aria-label="language dropdown" name="globe" style="fill: white"></pds-icon></a>
+                <div id="myDropdown" class="dropdown-content" tabindex="1">
+                  <a class="dropdown-hover" ng-repeat="language in languages" ng-click="switchLanguage(this.language)" value="{{language}}">{{language}}</a>
+                </div>
+              </div>
+              <pds-user-menu name="psf-user-menu-name" class="psf-user-menu"></pds-user-menu>
+            </div>
+          </div>
+          <main>
+            <br>
+            <div id="successMsg" style="display: none;">
+              <div class="flex-container successDiv" >
+                <div class="checkmarkStyle" ><pds-icon name="checkmark-alt" style="fill: #52BA2B;"></pds-icon></div>
+                <div class="successMsgOuterDiv"><div tabindex="0" canDismiss="true" id="successMsgDiv" aria-live="assertive"  role="alert"></div></div>
+                <div  class="closeIconStyle"><a ng-click="closeSuccessMsg()"><pds-icon class="pds-icon-medium " style="fill:#52BA2B;" name="x-alt" ></pds-icon></a></div>
+              </div>
+            </div>
+            <div class="container form pds-content" id="formContent" style="margin-left: auto !important; margin-right: auto !important;">
+
+              <div class="row">
+
+                <div ng-if="formParams.isFormValid == 0">
+                  <label>
+                      <h3><b ng-bind ="formParams.FormValidTitle"></b></h3>
+                  </label>
+                  <p style="margin-inline-start: 25px;" ng-bind="formParams.FormValidErrorMessage"></p>
+                </div>
+                <div ng-if="formParams.isFormValid == 1">
+                  <div ng-if="formParams.isFormPublish == 0">
+                    <label>
+                        <h3><b ng-bind ="formParams.formUnPublishMessageTitle"></b></h3>
+                    </label>
+                    <p style="margin-inline-start: 25px;" ng-bind="formParams.formUnPublishMessageError"></p>
+                  </div>
+
+                  <div ng-if="formParams.isFormPublish == 1" id="formcontainer" class="col-xs-12" sortable="false" ng-cloak>
+                    <div class="panel panel-default formpanel" style="margin-top: 20px;">
+                      <div class="panel-heading">
+                        <span class="title" ng-bind-html="getSafeHtml(formContent.title)" tabindex="0"></span>
+                        <p class="description" ng-bind-html="getSafeHtml(formContent.description)" tabindex="{{getSafeHtml(formContent.description)!=''? 0:''}}"></p>
+                      </div>
+                      <div class="panel-body" custom-validation>
+                        <div class="element" ng-repeat="element in formContent.elements track by element.id"
+                             ng-class="hasError()"
+                             ng-show="checkWorkFlow(element) || element.loadWorkFlow"
+                             ng-include src="getElementTemplate(element)">
+                        </div>
+                      </div>
+                      <div class="form-footer panel-footer" id="formFooter">
+                        <button class="btn btn-primary btn-sm" id="btnprimary" style="float: right;" ng-click="submitPRForm()" ng-disabled="isSubmitBtnDisabled" ng-if="!isi18nEnabledGuardian">Submit</button>
+                        <button class="btn btn-primary btn-sm" id="btnprimary" style="float: right;" ng-click="submitPRForm()" ng-disabled="isSubmitBtnDisabled" ng-if="isi18nEnabledGuardian">{{commonMessageKeys['eec.html.public_formbuilder.form.submit']}}</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div ng-cloak id="legalFooter" style="text-align: center;">
+              <div>
+                <p style="color: #666; font-size: 90;">
+                  © 2019-<script>document.write(new Date().getFullYear())</script> <span ng-if="!isi18nEnabledGuardian">PowerSchool Group LLC and/ or its affiliate(s). All rights reserved.</span><span ng-if="isi18nEnabledGuardian">{{commonMessageKeys['eec.html.public_formbuilder.form.rights']}}</span>
+                  <BR>
+                  <span ng-if="isi18nEnabledGuardian">{{commonMessageKeys['eec.html.public_formbuilder.form.license']}}</span>
+                  <span ng-if="!isi18nEnabledGuardian">All trademarks are either owned or licensed by PowerSchool Group LLC and/ or its affiliates.</span>
+                  <BR>
+                  <span class="text-wrapper">
+                  <a href="https://www.powerschool.com/privacy/" target="_blank" style="color: #0066a5 !important;" ng-if="!isi18nEnabledGuardian">
+                    Privacy
+                  </a>
+                  <a href="https://www.powerschool.com/privacy/" target="_blank" style="color: #0066a5 !important;" ng-if="isi18nEnabledGuardian">
+                    {{commonMessageKeys['eec.html.public_formbuilder.form.privacy']}}
+                  </a>
+                  •
+                  <a href="https://www.powerschool.com/terms/" target="_blank" style="color: #0066a5 !important;" ng-if="!isi18nEnabledGuardian">
+                    Terms
+                  </a>
+                  <a href="https://www.powerschool.com/terms/" target="_blank" style="color: #0066a5 !important;" ng-if="isi18nEnabledGuardian">
+                    {{commonMessageKeys['eec.html.public_formbuilder.form.terms']}}
+                  </a>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </main>
+        </div>
+      <script type="text/javascript" src="/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=4&cb=1126436899" async></script></body>
+</html>
+<script>
+  // set timeout to get datetime picker element
+   setTimeout(function(){
+      var x = document.getElementsByClassName("ui-datepicker-trigger");
+      for(var i=0; i<x.length; i++){
+          $j(x[i]).attr("aria-hidden", "true");
+          if(x[i].previousSibling.disabled == true){
+              x[i].disabled = true; //turn datetime picker button to disabled
+          }else{
+              x[i].disabled = false; //turn datetime picker button to able
+          }
+      }
+  }, 3000);
+
+  $j(document).ready(function() {
+    var reloading = sessionStorage.getItem("reloading");
+    if (reloading) {
+        sessionStorage.removeItem("reloading");
+        var successMsg = sessionStorage.getItem("successMsg");
+        sessionStorage.removeItem("successMsg");
+        document.getElementById('successMsgDiv').innerHTML = successMsg ;
+        document.getElementById('successMsg').style.display = 'block';
+    }
+});
+
+</script>
+
+<script>
+
+var windowHasLoaded = false;
+var iscssloaded = false;
+window.onload = function () {
+  windowHasLoaded = true;
+}
+var classids = [];
+var divtagarray = [];
+var iselementloaded = false;
+var childnodeslist = [];
+var getDivClass;
+
+var preRegSubmitted = 0;
+
+$j(document).keyup(function(e) {
+    //When escape key clicked + Pre-Reg response is submitted
+    if (e.keyCode == 27 && preRegSubmitted == 1) {
+        //reload the page
+        window.location.reload();
+    }
+});
+
+function doSomethingWhenWindowHasLoaded() {
+  if (!windowHasLoaded && !iscssloaded && !angular.element(document.body).scope()){
+      // onload event hasn't fired yet, wait 100ms and check again
+      window.setTimeout(doSomethingWhenWindowHasLoaded, 100);
+  }
+  else{
+    if(angular.element(document.body).scope() && angular.element(document.body).scope().formContent != undefined && Object.keys(angular.element(document.body).scope().formContent).length > 0 && angular.element(document.body).scope().formContent.css != undefined){
+    // onload event has already fired, so we can continue
+      var css = angular.element(document.body).scope().formContent.css;
+      var style = document.createElement('style');
+      style.innerHTML = css;
+      style.innerHTML += css.replaceAll('.','div.').replaceAll('{',' label{');
+      document.head.appendChild(style);
+      iscssloaded = true;
+    }
+    else{
+      window.setTimeout(function() {
+        doSomethingWhenWindowHasLoaded();
+      }, 100);
+    }
+  }
+}
+doSomethingWhenWindowHasLoaded();
+
+</script>
