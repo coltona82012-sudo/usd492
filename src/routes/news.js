@@ -25,8 +25,6 @@ router.post("/addnews", async (req, res) => {
 // Get a single news article by ID
 router.get("/news/:id", async (req, res) => {
   try {
-    // Change 'id' to whatever your custom field name is in your schema
-    // (e.g., externalId: req.params.id or id: req.params.id)
     const singleNews = await News.findOne({ id: req.params.id });
 
     if (!singleNews) {
@@ -34,7 +32,8 @@ router.get("/news/:id", async (req, res) => {
     }
     res.json(singleNews);
   } catch (err) {
-    res.status(500).json({ error: "Failed to fetch news article" });
+    console.error(err); // This will log the exact database error to your terminal/logs
+    res.status(500).json({ error: err.message }); // This sends the real error back in the response so you can see it
   }
 });
 // Get sample news content for restoration
