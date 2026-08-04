@@ -8,6 +8,8 @@ on:
 jobs:
   scrape:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # Grants the workflow permissions to push commits back to the repository
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -27,5 +29,6 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add static/
+          git add usd492.org/
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: automated daily scrape update [skip ci]" && git push)
           git diff --quiet && git diff --staged --quiet || (git commit -m "chore: automated daily scrape update [skip ci]" && git push)
