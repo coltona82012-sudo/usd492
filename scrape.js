@@ -1,10 +1,10 @@
+const puppeteer = require('puppeteer');
 const fs = require('fs');
 const path = require('path');
-const puppeteer = require('puppeteer');
 
 const START_URL = 'https://usd492.org';
 const TARGET_DOMAIN = 'usd492.org';
-const OUTPUT_DIR = path.join(__dirname, '..', 'static');
+const OUTPUT_DIR = path.join(__dirname, 'static');
 
 const visitedUrls = new Set();
 const urlsToVisit = [START_URL];
@@ -13,27 +13,36 @@ function urlToFilename(urlStr) {
     try {
         const parsed = new URL(urlStr);
         let pathname = parsed.pathname;
-        if (pathname === '/' || pathname.endsWith('/')) pathname += 'index.html';
-        if (!path.extname(pathname)) pathname += '.html';
+        
+        if (pathname === '/' || pathname.endsWith('/')) {
+            pathname += 'index.html';
+        }
+        if (!path.extname(pathname)) {
+            pathname += '.html';
+        }
         return pathname;
     } catch (e) {
         return null;
     }
 }
 
-async function runScraper() {
-    console.log('Launching browser for daily crawl...');
+async function crawl() {
+    console.log('Launching browser...');
     const browser = await puppeteer.launch({ 
         headless: true,
         args: ['--no-sandbox', '--disable-setuid-sandbox']
     });
     const page = await browser.newPage();
+
     await page.setViewport({ width: 1280, height: 800 });
 
     while (urlsToVisit.length > 0) {
         const currentUrl = urlsToVisit.shift();
+        
         if (visitedUrls.has(currentUrl)) continue;
         visitedUrls.add(currentUrl);
+
+        console.log(`\n[${visitedUrls.size}/${visitedUrls.size + urlsToVisit.length}] Crawling: ${currentUrl}`);
 
         try {
             await page.goto(currentUrl, { waitUntil: 'networkidle2', timeout: 30000 });
@@ -55,6 +64,7 @@ async function runScraper() {
             }
 
             fs.writeFileSync(fullLocalPath, htmlContent);
+            console.log(`Saved to: ${localRelativePath}`);
 
             const links = await page.evaluate(() => {
                 return Array.from(document.querySelectorAll('a'))
@@ -70,13 +80,14 @@ async function runScraper() {
                     }
                 }
             }
+
         } catch (err) {
             console.error(`Failed to scrape ${currentUrl}:`, err.message);
         }
     }
 
+    console.log('\nCrawling finished! Closing browser.');
     await browser.close();
-    console.log('Scraping complete.');
 }
 
-runScraper();
+crawl();
