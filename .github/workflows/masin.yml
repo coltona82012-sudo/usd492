@@ -1,0 +1,35 @@
+name: Daily USD492 Wget Mirror
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Runs every day at midnight UTC
+  workflow_dispatch:
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download site files using wget
+        run: |
+          # Remove old static folder contents safely if needed, or let wget update them
+          mkdir -p static
+          
+          wget --mirror \
+               --convert-links \
+               --adjust-extension \
+               --page-requisites \
+               --no-parent \
+               --no-host-directories \
+               --cut-dirs=0 \
+               -P static \
+               https://usd492.org
+
+      - name: Commit and push updated static files
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add static/
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: automated daily wget mirror update [skip ci]" && git push)
