@@ -14,17 +14,13 @@ router.get("/news", async (req, res) => {
   }
 });
 
-// Get a single news article by ID (matching your ID like 2040790)
 router.get("/news/:id", async (req, res) => {
   try {
     const articleId = req.params.id;
-
-    // Option A: If your articles are saved as individual HTML/JSON files named after their IDs (e.g., static/articles/2040790.json)
+    // Go up 3 levels from backend/src/routes to reach usd492/, then into static/articles/
     const articlePath = path.join(
       __dirname,
-      "..",
-      "static",
-      "articles",
+      "../../../static/articles",
       `${articleId}.json`,
     );
     const content = await fs.readFile(articlePath, "utf8");
