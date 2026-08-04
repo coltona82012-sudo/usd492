@@ -52,6 +52,8 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Something broke!' });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
-});
+// Remove or comment this out:
+// app.listen(PORT, () => { ... });
+
+// Add this at the very bottom of the file:
+module.exports = app;
